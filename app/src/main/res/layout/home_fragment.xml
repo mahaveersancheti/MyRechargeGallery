@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+    android:id="@+id/ll1"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:padding="0dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#f9e50a"
+        android:id="@+id/tvDrawerNotice"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:ellipsize="marquee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/ll"
+        android:layout_marginTop="15dp"
+        android:background="#333333" />
+
+    <TextView
+        android:visibility="gone"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/work_sans"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"
+        android:id="@+id/tvDrawerGreeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Good Morning" />
+
+    <LinearLayout
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:fontFamily="@font/work_sans_medium"
+            android:textSize="18dp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/tvDrawerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="" />
+
+        <TextView
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="6dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:id="@+id/tvDrawerLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="" />
+    </LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:fontFamily="@font/work_sans"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/tvDrawerLastLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your last login : Yesterday" />
+
+</LinearLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/ll1"
+        android:layout_marginTop="0dp"
+        android:elevation="10dp"
+        android:background="@drawable/layout_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textStyle="bold"
+                android:fontFamily="@font/work_sans"
+                android:layout_marginLeft="8dp"
+                android:id="@+id/tvDrawerReferId"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" Balance : " />
+
+            <TextView
+                android:fontFamily="@font/work_sans"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="right"
+                android:id="@+id/tvDrawerRefer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Today's Sale :  " />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/ll"
+            android:layout_marginTop="6dp"
+            android:background="#D3D3D3" />
+
+        <GridView
+            android:paddingBottom="10dp"
+            android:scrollbars="none"
+            android:id="@+id/gvHome"
+            android:numColumns="3"
+            android:layout_below="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

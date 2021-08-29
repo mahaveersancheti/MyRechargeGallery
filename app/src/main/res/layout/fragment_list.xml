@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llSearch"
+        android:padding="4dp"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_weight="70"
+            android:layout_gravity="center"
+            android:layout_marginRight="8dp"
+            android:textColorHint="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            android:hint="Search String"
+            android:id="@+id/etSearchString"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="none" />
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_weight="70"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginRight="8dp"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:textColorHint="@color/colorPrimary"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            -->
+<!--        </com.google.android.material.textfield.TextInputEditText>-->
+
+        <Button
+            android:layout_weight="30"
+            android:background="@color/colorPrimary"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:id="@+id/btnGo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+
+    </LinearLayout>
+
+    <ListView
+        android:background="#9b9696"
+        android:layout_marginTop="0dp"
+        android:layout_below="@+id/llSearch"
+        android:layout_above="@+id/btnAddNew"
+        android:id="@+id/lvUserList"
+        android:divider="@color/colorPrimary"
+        android:dividerHeight="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:layout_marginBottom="4dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center"
+        android:dividerHeight="2dp"
+        android:id="@+id/btnAddNew"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Add New" />
+</RelativeLayout>

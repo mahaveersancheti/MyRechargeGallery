@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llSearch"
+        android:padding="10dp"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_weight="70"
+            android:layout_gravity="center"
+            android:layout_marginRight="8dp"
+            android:layout_width="0dp"
+            android:textColorHint="@color/colorPrimary"
+            android:layout_marginTop="0dp"
+            android:hint="Mobile"
+            android:id="@+id/etSearchString"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone" />
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_weight="70"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginRight="8dp"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:textColorHint="@color/colorPrimary"-->
+<!--            android:layout_height="wrap_content">-->
+
+
+<!--        </com.google.android.material.textfield.TextInputEditText>-->
+
+        <Button
+            android:layout_weight="30"
+            android:background="@color/colorPrimary"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:id="@+id/btnGo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:weightSum="100"
+        android:id="@+id/llMsg"
+        android:layout_below="@id/llSearch"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_weight="25"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:maxLines="1"
+                android:fontFamily="@font/work_sans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mobile" />
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/textColor"
+                android:fontFamily="@font/work_sans_medium"
+                android:id="@+id/tvMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="8421881175" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="25"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:maxLines="1"
+                android:fontFamily="@font/work_sans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Limit" />
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/textColor"
+                android:fontFamily="@font/work_sans_medium"
+                android:id="@+id/tvLimitAmt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="56" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="25"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:maxLines="1"
+                android:fontFamily="@font/work_sans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Used Amt" />
+
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/textColor"
+                android:fontFamily="@font/work_sans_medium"
+                android:id="@+id/tvUsedAmt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="56" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="25"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:maxLines="1"
+                android:fontFamily="@font/work_sans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remaining Amt" />
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/textColor"
+                android:fontFamily="@font/work_sans_medium"
+                android:id="@+id/tvRemainingAmt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="56" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/llMsg"
+        android:layout_above="@+id/btnAddBeneficiary"
+        android:id="@+id/lvUserList"
+        android:divider="@color/colorPrimary"
+        android:dividerHeight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:dividerHeight="2dp"
+        android:id="@+id/btnAddBeneficiary"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Add New" />
+</RelativeLayout>

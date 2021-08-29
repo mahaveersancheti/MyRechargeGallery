@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".UPIGatewayActivity">
+
+    <EditText
+        android:inputType="numberDecimal"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="@drawable/btn_back"
+        android:hint="Amount"
+        android:id="@+id/etxt_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@drawable/btn_back"
+        android:hint="UPI ID"
+        android:id="@+id/etxt_upi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Pay"
+        android:background="@drawable/btn_back_theme"
+        android:textColor="#FFFFFF"
+        android:id="@+id/btn_pay"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

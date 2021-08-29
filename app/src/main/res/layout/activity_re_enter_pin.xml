@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Enter PIN"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="4">
+
+                <EditText
+                    android:id="@+id/pin1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/bluedot"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="textPassword"
+                    android:padding="2dp"
+
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pin2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bluedot"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="numberPassword"
+                    android:padding="20dp"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pin3"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bluedot"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="numberPassword"
+                    android:padding="20dp"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pin4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bluedot"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="numberPassword"
+                    android:padding="20dp"
+
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/terms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Re-enter to set your pin"
+                android:textColor="#ffffff"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/enterpinbackground"
+        android:orientation="vertical">
+
+        <!--Second Line-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:id="@+id/textNumber1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/keypadelement"
+                android:layout_weight="33.33"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="1"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/keyboard_textsize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textNumber2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/keypadelement"
+                android:layout_weight="33.33"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="2"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/keyboard_textsize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textNumber3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/keypadelement"
+                android:layout_weight="33.33"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="3"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/keyboard_textsize"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:id="@+id/textNumber4"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/keypadelement"
+                android:layout_weight="33.33"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="4"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/keyboard_textsize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textNumber5"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/keypadelement"
+                android:layout_weight="33.33"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="5"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/keyboard_textsize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textNumber6"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/keypadelement"
+                android:layout_weight="33.33"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="6"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/keyboard_textsize"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!--Third Line-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:id="@+id/textNumber7"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/keypadelement"
+                android:layout_weight="33.33"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="7"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/keyboard_textsize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textNumber8"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/keypadelement"
+                android:layout_weight="33.33"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="8"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/keyboard_textsize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textNumber9"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/keypadelement"
+                android:layout_weight="33.33"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="9"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/keyboard_textsize"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!--Last LIne-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:id="@+id/textNumber0"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/keypadelement"
+                android:layout_weight="40"
+                android:gravity="center"
+                android:padding="10dp"
+                android:paddingBottom="4dp"
+                android:text="0"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/keyboard_textsize"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/ImageCnacel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/xbutton"
+                android:layout_gravity="center"
+                android:layout_weight="60"
+                android:padding="10dp"
+                android:paddingBottom="4dp"
+                android:src="@drawable/clear" />
+
+            <!--   <ImageView
+                   android:id="@+id/ImageClear"
+                   android:layout_width="match_parent"
+                   android:layout_height="60dp"
+                   android:layout_gravity="center"
+                   android:layout_weight="33.33"
+                   android:padding="10dp"
+                   android:paddingBottom="4dp"
+                   android:src="@drawable/tickicon" />-->
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

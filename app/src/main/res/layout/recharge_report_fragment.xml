@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:weightSum="100"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_weight="80"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etSearchString"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Check By Number"
+                android:inputType="phone" />
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:padding="3dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_back"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_weight="1"
+                    android:text="From Date"
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/tvFrmDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_marginLeft="2dp"
+                    android:padding="3dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_back"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_weight="1"
+                    android:text="To Date"
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/tvToDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_marginLeft="2dp"
+            android:textAllCaps="false"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:id="@+id/btnGo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/ll"
+        android:id="@+id/refresh"
+        android:layout_marginTop="10dp"
+        android:weightSum="100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_gravity="center"
+            android:layout_weight="70"
+            android:text="Recharge Reports"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvRefresh"
+            android:drawableTint="@color/colorPrimary"
+            android:textColor="@color/colorPrimary"
+            android:drawableRight="@drawable/refresh"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_gravity="center"
+            android:layout_weight="30"
+            android:text="Refresh"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_below="@+id/refresh"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:layout_width = "match_parent"
+        android:layout_height="2dp"/>
+
+    <ListView
+        android:background="#9b9696"
+        android:layout_marginTop="0dp"
+        android:layout_below="@+id/line"
+        android:divider="@color/colorPrimary"
+        android:dividerHeight="0dp"
+        android:id="@+id/lvReport"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--  42a342  -->
+
+    <color name="colorPrimary">#636565</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <!--<color name="colorAccent">#f79433</color>-->
+    <color name="colorAccent">#42a342</color>
+
+    <!--<color name="themeColor">#D97E24</color>-->
+    <color name="themeColor">#42a342</color>
+    <color name="textColor">#333333</color>
+
+    <color name="red">#f70830</color>
+
+    <color name="white">#FFFFFF</color>
+</resources>

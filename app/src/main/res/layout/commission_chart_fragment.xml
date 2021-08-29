@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="100"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:paddingBottom="4dp"
+        android:background="@color/colorPrimary"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvCustomerCare"
+            android:layout_weight="50"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Customer Care"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvTerms"
+            android:layout_weight="50"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Terms"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+<ScrollView
+    android:layout_alignParentTop="true"
+    android:padding="16dp"
+    android:scrollbars="none"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llCustomerCare"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:padding="4dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:text="Idea"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:text="198"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="6dp"
+                android:padding="4dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:text="Vodafone"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:text="198"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="6dp"
+                android:padding="4dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:text="Airtel"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:text="198 OR 121"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="6dp"
+                android:padding="4dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:text="Docomo"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:text="198"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="6dp"
+                android:padding="4dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:text="BSNL"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:text="1501 OR 1503"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="6dp"
+                android:padding="4dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:text="JIO"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:text="198 OR 18608933333"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="6dp"
+                android:padding="4dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:text="Videocon D2H"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:text="9115691156"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="6dp"
+                android:padding="4dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:text="Tata Sky"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:text="18001806633"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="6dp"
+                android:padding="4dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:text="Dish TV"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:text="18602583474"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="6dp"
+                android:padding="4dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:text="Airtel DTH TV"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="50"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:text="02044448080"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/llTerms"
+    android:visibility="gone"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textSize="22dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="Terms and Conditions"
+        android:textStyle="bold"
+        android:textColor="@color/textColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_marginTop="5dp"
+        android:background="#D3D3D3"
+        android:layout_width = "match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:text="1. Wrong recharge will not be refunded in any conditions."
+        android:textColor="@color/textColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_marginTop="10dp"
+        android:background="#D3D3D3"
+        android:layout_width = "match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:text="2. Please check recharge status in transaction report after every recharge request."
+        android:textColor="@color/textColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_marginTop="10dp"
+        android:background="#D3D3D3"
+        android:layout_width = "match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:text="3. For all pending recharge please make complaint by clicking on recahrge in transaction report."
+        android:textColor="@color/textColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_marginTop="10dp"
+        android:background="#D3D3D3"
+        android:layout_width = "match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:text="4. Customer care number 7758889888. \nTime 10:30 AM to 8:30 PM Mon-Sat and \nSunday 11:00 AM to 2:00 PM."
+        android:textColor="@color/textColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_marginTop="10dp"
+        android:background="#D3D3D3"
+        android:layout_width = "match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:text="5. Checking scheme is subject to telecom operator company. My Recharge Gallery do not take any validation on it. Do recharge on your responsibility."
+        android:textColor="@color/textColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_marginTop="10dp"
+        android:background="#D3D3D3"
+        android:layout_width = "match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        android:text="6. My Recharge Gallery has full rights to change commission and service charge at any moment without giving any intimations. It depends on telecom service providers."
+        android:textColor="@color/textColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
+</LinearLayout>
