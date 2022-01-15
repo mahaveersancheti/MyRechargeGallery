@@ -589,10 +589,11 @@ public class PrepaidRecharge extends Fragment {
                 return params;
             }
         };
-        int socketTimeout = 30000; // 30 seconds. You can change it
+        int socketTimeout = 0; // 30 seconds. You can change it
         //RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,-1,1);
+        RetryPolicy policy = new DefaultRetryPolicy(0,-1,1);
         stringRequest.setRetryPolicy(policy);
+
         final RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
         requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {

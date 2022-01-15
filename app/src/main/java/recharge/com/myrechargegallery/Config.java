@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 public class Config {
 //    public static String JSON_URL = "http://192.168.1.12/myrechargegallery/webservices-v6/";
     public static String JSON_URL = "http://myrechargegallery.net/webservices-v6/";
+//    public static String JSON_URL = "https://thekidzit.in/myrechargegallery/";
 
     public static boolean hasConnection(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(

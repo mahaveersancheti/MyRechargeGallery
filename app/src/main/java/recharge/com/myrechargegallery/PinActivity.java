@@ -171,13 +171,13 @@ public class PinActivity extends AppCompatActivity {
 //            }
 //        });
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            //Job Schedular for api 23 and above
-            Util.scheduleJob(this);
-        } else{
-            //call background service for notification.
-            startService(new Intent(getApplicationContext(), BackServices.class));  //not working for 5.1, redmi
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//            //Job Schedular for api 23 and above
+//            Util.scheduleJob(this);
+//        } else{
+//            //call background service for notification.
+//            startService(new Intent(getApplicationContext(), BackServices.class));  //not working for 5.1, redmi
+//        }
         //startService(new Intent(getApplicationContext(), GPSTracker.class));  //not working for 5.1, redmi
         //startService(new Intent(getApplicationContext(), BackServices.class));  //not working for 5.1, redmi
 

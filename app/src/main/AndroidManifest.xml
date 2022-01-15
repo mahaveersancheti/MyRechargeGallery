@@ -65,16 +65,16 @@
             android:parentActivityName=".LoginActivity" />
         <activity android:name=".ValidateOTPActivity" />
 
-        <service
-            android:name=".GPSTracker"
-            android:enabled="true"
-            android:exported="true"
-            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE"
-            android:process=":separate">
-            <intent-filter>
-                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
-            </intent-filter>
-        </service>
+<!--        <service-->
+<!--            android:name=".GPSTracker"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true"-->
+<!--            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE"-->
+<!--            android:process=":separate">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
         <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -88,20 +88,20 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".BackServices"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".jobschedular.TestJobService"
-            android:label="Word service"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
+<!--        <service-->
+<!--            android:name=".BackServices"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true" />-->
+<!--        <service-->
+<!--            android:name=".jobschedular.TestJobService"-->
+<!--            android:label="Word service"-->
+<!--            android:permission="android.permission.BIND_JOB_SERVICE" />-->
 
-        <receiver android:name=".jobschedular.MyStartServiceReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.SCREEN_ON" />
-            </intent-filter>
-        </receiver>
+<!--        <receiver android:name=".jobschedular.MyStartServiceReceiver">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.SCREEN_ON" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
 
 
         <meta-data

@@ -128,9 +128,10 @@ public class DTHRecharge extends Fragment {
                         etPhone.setError("Number must start with 3 and length is 10 digits.");
                     }
                 } else if(operator.contains("tata")) {
-                    if(!((number.startsWith("10") || number.startsWith("11") || number.startsWith("12") || number.startsWith("13") || number.startsWith("14") || number.startsWith("15") || number.startsWith("16") || number.startsWith("17")) && number.length()==10)) {
+                    if(!((number.startsWith("10") || number.startsWith("11") || number.startsWith("12") || number.startsWith("13") || number.startsWith("14") || number.startsWith("15") || number.startsWith("16") || number.startsWith("17") || number.startsWith("18")) && number.length()==10)) {
                         flag = false;
                         errorMsg = "Number must start with either 10 or 11 or 12 or 13 and length is 10 digits.";
+                        etPhone.setError("Number must start with either 10 or 11 or 12 or 13 and length is 10 digits.");
                         etPhone.setError("Number must start with either 10 or 11 or 12 or 13 and length is 10 digits.");
                     }
                 }
@@ -418,10 +419,10 @@ public class DTHRecharge extends Fragment {
                 etPhone.setError("Number must start with 3 and length is 10 digits.");
             }
         } else if(operator.contains("tata")) {
-            if(!((number.startsWith("10") || number.startsWith("11") || number.startsWith("12") || number.startsWith("13")) && number.length()==10)) {
+            if(!((number.startsWith("10") || number.startsWith("11") || number.startsWith("12") || number.startsWith("13") || number.startsWith("14") || number.startsWith("15") || number.startsWith("16") || number.startsWith("17") || number.startsWith("18")) && number.length()==10)) {
                 flag = false;
 //                errorMsg = "Number must start with either 10 or 11 or 12 or 13 and length is 10 digits.";
-                etPhone.setError("Number must start with either 10 or 11 or 12 or 13 and length is 10 digits.");
+                etPhone.setError("Number must start with either 10 or 11 or 12 or 13 or 14 or 15 or 16 or 17 or 18 and length is 10 digits.");
             }
         }
         return flag;
@@ -790,7 +791,7 @@ public class DTHRecharge extends Fragment {
                 try {
                     progressDialog.dismiss();
                     JSONObject jsonObject1 = new JSONObject(response);
-                    Object record = jsonObject1.getJSONArray("records");
+//                    Object record = jsonObject1.getJSONArray("records");
 //                    if(record instanceof JSONObject) {
 //                        JSONObject jRecord = jsonObject1.getJSONObject("records");
 //                    } else if(record instanceof JSONArray) {
@@ -1086,7 +1087,6 @@ public class DTHRecharge extends Fragment {
             }
         });
     }
-
 
     public void showListPlans(ArrayList<Operator> alPlans) {
         dialog = new Dialog(getActivity());

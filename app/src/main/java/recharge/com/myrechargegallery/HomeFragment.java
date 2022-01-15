@@ -546,8 +546,9 @@ public class HomeFragment extends Fragment {
                 selectedFragment = CommissionChart.newInstance();
                 break;
             case 7 :
-                Intent intent = new Intent(getActivity(), UPIGatewayActivity.class);
-                startActivity(intent);
+                Toast.makeText(getActivity(), "Coming soon", Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(getActivity(), UPIGatewayActivity.class);
+//                startActivity(intent);
                 break;
         }
         if(selectedFragment!=null) {
