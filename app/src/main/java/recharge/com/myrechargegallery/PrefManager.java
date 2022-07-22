@@ -35,6 +35,18 @@ public class PrefManager {
     public static final String smsBackupDate = "smsBackupDate";
     public static final String smsBackupTime = "smsBackupTime";
 
+    public static final String isPaymentPreviousOrder = "isPaymentPreviousOrder";
+    public static final String paymentUrl = "paymentUrl";
+    public static final String paymentOrderId = "paymentOrderId";
+    public static final String paymentClientTXNId = "paymentClientTXNId";
+    public static final String paymentOrderDate = "paymentOrderDate";
+    public static final String paymentAmount = "paymentAmount";
+    public static final String paymentEmail = "paymentEmail";
+    public static final String paymentMobile = "paymentMobile";
+    public static final String paymentLogId = "paymentLogId";
+    public static final String isUPIAllowed = "isUPIAllowed";
+
+
     public PrefManager(Context context) {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
@@ -46,11 +58,94 @@ public class PrefManager {
         editor.commit();
     }
 
+
     public boolean checkSharedPrefs(String key) {
         if (pref.contains(key)) {
             return true;
         }
         return false;
+    }
+
+
+    public boolean isUPIAllowed(){
+        return pref.getBoolean(isUPIAllowed, false);
+    }
+
+    public void setIsUPIAllowed(boolean value){
+        editor.putBoolean(isUPIAllowed, value);
+        editor.commit();
+    }
+
+    public void setPaymentLogId(String value) {
+        editor.putString(paymentLogId, value);
+        editor.commit();
+    }
+    public String getPaymentLogId() {
+        return pref.getString(paymentLogId, "");
+    }
+
+
+    public void setPaymentUrl(String value) {
+        editor.putString(paymentUrl, value);
+        editor.commit();
+    }
+    public String getPaymentUrl() {
+        return pref.getString(paymentUrl, "");
+    }
+
+    public void setPaymentEmail(String value) {
+        editor.putString(paymentEmail, value);
+        editor.commit();
+    }
+    public String getPaymentEmail() {
+        return pref.getString(paymentEmail, "");
+    }
+    public void setPaymentMobile(String value) {
+        editor.putString(paymentMobile, value);
+        editor.commit();
+    }
+    public String getPaymentMobile() {
+        return pref.getString(paymentMobile, "");
+    }
+
+    public void setPaymentAmount(String value) {
+        editor.putString(paymentAmount, value);
+        editor.commit();
+    }
+    public String getPaymentAmount() {
+        return pref.getString(paymentAmount, "");
+    }
+
+    public void setPaymentOrderId(String value) {
+        editor.putString(paymentOrderId, value);
+        editor.commit();
+    }
+    public String getPaymentOrderId() {
+        return pref.getString(paymentOrderId, "");
+    }
+
+    public void setPaymentClientTXNId(String value) {
+        editor.putString(paymentClientTXNId, value);
+        editor.commit();
+    }
+    public String getPaymentClientTXNId() {
+        return pref.getString(paymentClientTXNId, "");
+    }
+
+    public void setPaymentOrderDate(String value) {
+        editor.putString(paymentOrderDate, value);
+        editor.commit();
+    }
+    public String getPaymentOrderDate() {
+        return pref.getString(paymentOrderDate, "");
+    }
+
+    public void setIsPaymentPreviousOrder(boolean value) {
+        editor.putBoolean(isPaymentPreviousOrder, value);
+        editor.commit();
+    }
+    public boolean getIsPaymentPreviousOrder() {
+        return pref.getBoolean(isPaymentPreviousOrder, false);
     }
 
     public void setUserPin(String value) {

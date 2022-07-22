@@ -106,6 +106,10 @@ public class PrepaidRecharge extends Fragment {
         view = inflater.inflate(R.layout.prepaid_recharge_fragment, container, false);
         DrawerActivity.setTitle("Prepaid Recharge");
 
+
+
+
+
         if (getArguments() != null) {
             number = getArguments().getString("number");
             op = getArguments().getString("op");
@@ -282,7 +286,7 @@ public class PrepaidRecharge extends Fragment {
                 String op = spOperator.getSelectedItem().toString();
                 if(!op.trim().equalsIgnoreCase("Select Operator")) {
                     if(flag) {
-                        if(prefManager.getBalance()<Integer.parseInt(amount)) {
+                        if(prefManager.getBalance()<Float.parseFloat(amount)) {
                             etAmount.setError("Insufficient Balance");
                             return;
                         }
@@ -308,6 +312,12 @@ public class PrepaidRecharge extends Fragment {
                                     public void onClick(DialogInterface arg0, int arg1) {
                                         btnRecharge.setTextColor(getResources().getColor(R.color.themeColor));
                                         btnRecharge.setEnabled(false);
+
+//                                        Intent intent = new Intent(getActivity(),UPIGatewayActivity.class);
+//                                        intent.putExtra("amount", etAmount.getText().toString());
+//                                        startActivity(intent);
+
+                                        //Uncomment
                                         recharge();
 
                                     }

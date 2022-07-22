@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -32,7 +33,10 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.installations.FirebaseInstallations;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,7 +77,36 @@ public class PinActivity extends AppCompatActivity {
 
 //        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#333333")));
 
-        fcmToken = FirebaseInstanceId.getInstance().getToken();
+//        fcmToken = FirebaseInstanceId.getInstance().getToken();
+
+        FirebaseInstallations.getInstance().getId().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                if (!task.isSuccessful()) {
+                    Log.w("veer", "getInstanceId failed", task.getException());
+                    return;
+                }
+
+                FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (task.isSuccessful()) {
+                            // Get new Instance ID token
+                            String token = task.getResult();
+                            Log.d("veer token", token + "");
+
+                        }
+                    }
+                });
+
+//                // Get new Instance ID token
+                fcmToken = task.getResult();
+                Log.d("veer token installation", task.getResult() + "");
+
+                //Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         Log.d("veer token", fcmToken + "");
 
         terms = (TextView) findViewById(R.id.terms);

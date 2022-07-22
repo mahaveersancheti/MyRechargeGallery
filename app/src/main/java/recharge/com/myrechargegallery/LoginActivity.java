@@ -1,5 +1,6 @@
 package recharge.com.myrechargegallery;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -49,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     PrefManager prefManager;
     //DataBaseWrapper db;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
