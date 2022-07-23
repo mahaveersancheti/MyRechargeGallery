@@ -30,7 +30,7 @@ public class WebActivity extends AppCompatActivity {
         binding = ActivityWebBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Make payment");
+        getSupportActionBar().setTitle("Add Wallet Balance");
         setResult(RESULT_OK);
         prefManager = new PrefManager(this);
         webViewClient = new WebViewClient(){
@@ -42,6 +42,15 @@ public class WebActivity extends AppCompatActivity {
                     finish();
                 }
             }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                if (url.contains("client_txn_id")){
+                    finish();
+                }
+            }
+
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url.startsWith("upi:")) {    //To allow link which starts with upi://

@@ -82,7 +82,7 @@ public class UPIGatewayActivity extends AppCompatActivity {
         binding = ActivityUPIGatewayBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 //        setContentView(R.layout.activity_u_p_i_gateway);
-        getSupportActionBar().setTitle("Make Payment");
+        getSupportActionBar().setTitle("Add Wallet Balance");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         prefManager = new PrefManager(this);
 
@@ -454,7 +454,7 @@ public class UPIGatewayActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     dialogSuccess.dismiss();
-
+                    finish();
                 }
             });
             dialogSuccess.show();

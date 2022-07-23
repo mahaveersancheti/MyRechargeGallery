@@ -50,8 +50,8 @@ public class HomeFragment extends Fragment {
     String titlesDistributor[] = {"Prepaid\nRecharge", "Postpaid\nRecharge", "DTH\nRecharge", "Electricity\nBill", "Money\nTransfer", "Fund\nTransfer", "Recharge\nReport", "Create\nRetailer", "Information"};
     ArrayList<Item> alItemsDistributor;
 
-    int imgsRetailers[] = {R.drawable.prepaid, R.drawable.postpaid, R.drawable.dth1, R.drawable.electricity, R.drawable.fund, R.drawable.trade_alert, R.drawable.commission, R.drawable.commission};
-    String titlesRetailers[] = {"Prepaid\nRecharge", "Postpaid\nRecharge", "DTH\nRecharge", "Electricity\nBill", "Money\nTransfer", "Recharge\nReport", "Information", "Make Payment"};
+    int imgsRetailers[] = {R.drawable.commission,R.drawable.prepaid, R.drawable.postpaid, R.drawable.dth1, R.drawable.electricity, R.drawable.fund, R.drawable.trade_alert, R.drawable.commission};
+    String titlesRetailers[] = {"Add Wallet\nBalance","Prepaid\nRecharge", "Postpaid\nRecharge", "DTH\nRecharge", "Electricity\nBill", "Money\nTransfer", "Recharge\nReport", "Information"};
     ArrayList<Item> alItemsRetailers;
 
     int imgsHome[] = {R.drawable.prepaid, R.drawable.postpaid, R.drawable.dth1, R.drawable.electricity, R.drawable.fund, R.drawable.trade_alert, R.drawable.home_icon};
@@ -508,25 +508,32 @@ public class HomeFragment extends Fragment {
     public void retailerOptions(int index) {
         Fragment selectedFragment = null;
         switch (index) {
-            case 0:
+            case 0: if (prefManager.isUPIAllowed()) {
+                Intent intent = new Intent(getActivity(), UPIGatewayActivity.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText(getActivity(), "You are not authorized/nPlease contact to admin", Toast.LENGTH_LONG).show();
+            }
+                break;
+            case 1:
                 if (prefManager.getPrepaid())
                     selectedFragment = PrepaidRecharge.newInstance();
                 else
                     Toast.makeText(getActivity(), "You are not authorized.", Toast.LENGTH_LONG).show();
                 break;
-            case 1:
+            case 2:
                 if (prefManager.getPostpaid())
                     selectedFragment = PostpaidRecharge.newInstance();
                 else
                     Toast.makeText(getActivity(), "You are not authorized.", Toast.LENGTH_LONG).show();
                 break;
-            case 2:
+            case 3:
                 if (prefManager.getDth())
                     selectedFragment = DTHRecharge.newInstance();
                 else
                     Toast.makeText(getActivity(), "You are not authorized.", Toast.LENGTH_LONG).show();
                 break;
-            case 3:
+            case 4:
                 if (prefManager.getElectricity())
                     selectedFragment = ElectricityBillPayment.newInstance();
                 else
@@ -538,34 +545,34 @@ public class HomeFragment extends Fragment {
 //                else
 //                    Toast.makeText(getActivity(), "You are not authorized.", Toast.LENGTH_LONG).show();
 //                break;
-            case 4:
+            case 5:
                 //money transfer
                 if (prefManager.getMoneyTransfer())
                     selectedFragment = MoneyTransfer.newInstance();
                 else
                     Toast.makeText(getActivity(), "You are not authorized.", Toast.LENGTH_LONG).show();
                 break;
-            case 5:
+            case 6:
                 //recharge report
                 selectedFragment = RechargeReport.newInstance();
                 break;
 //            case 6 :
 //                selectedFragment = CompaintRegister.newInstance();
 //                break;
-            case 6:
+            case 7:
                 selectedFragment = CommissionChart.newInstance();
                 break;
-            case 7:
-//                Intent intent = new Intent(getActivity(), UPIGatewayActivity.class);
-//                startActivity(intent);
-//                Toast.makeText(getActivity(), "Coming soon", Toast.LENGTH_LONG).show();
-                if (prefManager.isUPIAllowed()) {
-                    Intent intent = new Intent(getActivity(), UPIGatewayActivity.class);
-                    startActivity(intent);
-                }else{
-                                    Toast.makeText(getActivity(), "Coming soon", Toast.LENGTH_LONG).show();
-                }
-                break;
+//            case 7:
+////                Intent intent = new Intent(getActivity(), UPIGatewayActivity.class);
+////                startActivity(intent);
+////                Toast.makeText(getActivity(), "Coming soon", Toast.LENGTH_LONG).show();
+//                if (prefManager.isUPIAllowed()) {
+//                    Intent intent = new Intent(getActivity(), UPIGatewayActivity.class);
+//                    startActivity(intent);
+//                }else{
+//                                    Toast.makeText(getActivity(), "You are not authorized/nPlease contact to admin", Toast.LENGTH_LONG).show();
+//                }
+//                break;
         }
         if (selectedFragment != null) {
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
