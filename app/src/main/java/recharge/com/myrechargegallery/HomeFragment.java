@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -50,16 +51,23 @@ public class HomeFragment extends Fragment {
     String titlesDistributor[] = {"Prepaid\nRecharge", "Postpaid\nRecharge", "DTH\nRecharge", "Electricity\nBill", "Money\nTransfer", "Fund\nTransfer", "Recharge\nReport", "Create\nRetailer", "Information"};
     ArrayList<Item> alItemsDistributor;
 
-    int imgsRetailers[] = {R.drawable.commission,R.drawable.prepaid, R.drawable.postpaid, R.drawable.dth1, R.drawable.electricity, R.drawable.fund, R.drawable.trade_alert, R.drawable.commission};
-    String titlesRetailers[] = {"Add Wallet\nBalance","Prepaid\nRecharge", "Postpaid\nRecharge", "DTH\nRecharge", "Electricity\nBill", "Money\nTransfer", "Recharge\nReport", "Information"};
+    int imgsRetailers[] = {R.drawable.prepaid, R.drawable.postpaid, R.drawable.dth1, R.drawable.electricity, R.drawable.fund,  R.drawable.commission};
+    String titlesRetailers[] = {"Prepaid\nRecharge", "Postpaid\nRecharge", "DTH\nRecharge", "Electricity\nBill", "Money\nTransfer",  "Information"};
     ArrayList<Item> alItemsRetailers;
+
+
+    int imgsRetailersTop[] = {R.drawable.ewallet, R.drawable.trade_alert};
+    String titlesRetailersTop[] = {"Add Wallet\nBalance", "Recharge\nReport"};
+    ArrayList<Item> alItemsRetailersTop;
+
 
     int imgsHome[] = {R.drawable.prepaid, R.drawable.postpaid, R.drawable.dth1, R.drawable.electricity, R.drawable.fund, R.drawable.trade_alert, R.drawable.home_icon};
     String titlesHome[] = {"Prepaid\nRecharge", "Postpaid\nRecharge", "DTH\nRecharge", "Electricity\nBill", "Money\nTransfer", "Recharge\nReport", "Purchase\nBalance"};
     ArrayList<Item> alItemsHome;
 
     View view;
-    GridView gridView;
+    GridView gridView,gridTopView;
+    CardView crdTopView;
     TextView tvGreeting, tvName, tvLastLogin, tvRefer, tvReferId, tvLogout, tvNotice;
 
     PrefManager prefManager;
@@ -117,7 +125,9 @@ public class HomeFragment extends Fragment {
         }
 
         gridView = (GridView) view.findViewById(R.id.gvHome);
-
+        gridTopView = (GridView) view.findViewById(R.id.gvHomeTopRow);
+        crdTopView = (CardView) view.findViewById(R.id.crdTopRow);
+        crdTopView.setVisibility(View.GONE);
         String userType = prefManager.getUserType();
         //Toast.makeText(getActivity(), "" + userType, Toast.LENGTH_SHORT).show();
         //Toast.makeText(getActivity(), "User Type : " + userType, Toast.LENGTH_LONG).show();
@@ -145,7 +155,18 @@ public class HomeFragment extends Fragment {
             gridView.setAdapter(groupAdapter);
         } else if (userType.trim().equalsIgnoreCase("retailer")) {
             //Toast.makeText(getActivity(), "retailser", Toast.LENGTH_SHORT).show();
+            crdTopView.setVisibility(View.VISIBLE);
             alItemsRetailers = new ArrayList<>();
+            alItemsRetailersTop = new ArrayList<>();
+            for (int i = 0; i < titlesRetailersTop.length; i++) {
+                Item obj = new Item();
+                obj.setImgId(imgsRetailersTop[i]);
+                obj.setTitle(titlesRetailersTop[i]);
+                alItemsRetailersTop.add(obj);
+            }
+            ItemAdapter groupAdapterTop = new ItemAdapter(getActivity(), alItemsRetailersTop);
+            gridTopView.setAdapter(groupAdapterTop);
+
             for (int i = 0; i < titlesRetailers.length; i++) {
                 Item obj = new Item();
                 obj.setImgId(imgsRetailers[i]);
@@ -179,6 +200,17 @@ public class HomeFragment extends Fragment {
                     retailerOptions(i);
                 } else if (userType.trim().equalsIgnoreCase("home")) {
                     homeOptions(i);
+                }
+            }
+        });
+
+
+        gridTopView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String userType = prefManager.getUserType();
+              if (userType.trim().equalsIgnoreCase("retailer")) {
+                    retailerOptionsTop(i);
                 }
             }
         });
@@ -505,10 +537,13 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    public void retailerOptions(int index) {
+
+    public void retailerOptionsTop(int index) {
         Fragment selectedFragment = null;
         switch (index) {
-            case 0: if (prefManager.isUPIAllowed()) {
+            case 0:
+                //add wallet balance
+                if (prefManager.isUPIAllowed()) {
                 Intent intent = new Intent(getActivity(), UPIGatewayActivity.class);
                 startActivity(intent);
             }else{
@@ -516,24 +551,40 @@ public class HomeFragment extends Fragment {
             }
                 break;
             case 1:
+                //recharge report
+                selectedFragment = RechargeReport.newInstance();
+                break;
+        }
+        if (selectedFragment != null) {
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, selectedFragment);
+            transaction.commit();
+        }
+    }
+
+
+    public void retailerOptions(int index) {
+        Fragment selectedFragment = null;
+        switch (index) {
+            case 0:
                 if (prefManager.getPrepaid())
                     selectedFragment = PrepaidRecharge.newInstance();
                 else
                     Toast.makeText(getActivity(), "You are not authorized.", Toast.LENGTH_LONG).show();
                 break;
-            case 2:
+            case 1:
                 if (prefManager.getPostpaid())
                     selectedFragment = PostpaidRecharge.newInstance();
                 else
                     Toast.makeText(getActivity(), "You are not authorized.", Toast.LENGTH_LONG).show();
                 break;
-            case 3:
+            case 2:
                 if (prefManager.getDth())
                     selectedFragment = DTHRecharge.newInstance();
                 else
                     Toast.makeText(getActivity(), "You are not authorized.", Toast.LENGTH_LONG).show();
                 break;
-            case 4:
+            case 3:
                 if (prefManager.getElectricity())
                     selectedFragment = ElectricityBillPayment.newInstance();
                 else
@@ -545,21 +596,21 @@ public class HomeFragment extends Fragment {
 //                else
 //                    Toast.makeText(getActivity(), "You are not authorized.", Toast.LENGTH_LONG).show();
 //                break;
-            case 5:
+            case 4:
                 //money transfer
                 if (prefManager.getMoneyTransfer())
                     selectedFragment = MoneyTransfer.newInstance();
                 else
                     Toast.makeText(getActivity(), "You are not authorized.", Toast.LENGTH_LONG).show();
                 break;
-            case 6:
-                //recharge report
-                selectedFragment = RechargeReport.newInstance();
-                break;
+//            case 6:
+//                //recharge report
+//                selectedFragment = RechargeReport.newInstance();
+//                break;
 //            case 6 :
 //                selectedFragment = CompaintRegister.newInstance();
 //                break;
-            case 7:
+            case 5:
                 selectedFragment = CommissionChart.newInstance();
                 break;
 //            case 7:
