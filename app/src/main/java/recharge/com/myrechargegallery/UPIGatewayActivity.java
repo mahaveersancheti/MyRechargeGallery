@@ -95,26 +95,36 @@ public class UPIGatewayActivity extends AppCompatActivity {
 
 //        checkOrder();
 
-        if (prefManager.getIsPaymentPreviousOrder()) {
-            binding.crdOrder.setVisibility(View.VISIBLE);
-            binding.llDetails.setVisibility(View.GONE);
-            binding.txtName.setText(prefManager.getName());
-            binding.txtEmail.setText(prefManager.getPaymentEmail());
-            binding.txtMobile.setText(prefManager.getPaymentMobile());
-            binding.txtAmount.setText("\u20B9 " + prefManager.getPaymentAmount());
-            binding.txtTXNId.setText(prefManager.getPaymentClientTXNId());
+//        if (prefManager.getIsPaymentPreviousOrder()) {
+//            binding.crdOrder.setVisibility(View.VISIBLE);
+//            binding.llDetails.setVisibility(View.GONE);
+//            binding.txtName.setText(prefManager.getName());
+//            binding.txtEmail.setText(prefManager.getPaymentEmail());
+//            binding.txtMobile.setText(prefManager.getPaymentMobile());
+//            binding.txtAmount.setText("\u20B9 " + prefManager.getPaymentAmount());
+//            binding.txtTXNId.setText(prefManager.getPaymentClientTXNId());
+//
+//            binding.btnOrderPay.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent browserIntent = new Intent(UPIGatewayActivity.this, WebActivity.class);
+//                    startActivityForResult(browserIntent,WEB_ACTIVITY_RESULT);
+//
+//
+//                }
+//            });
+//            checkOrder();
+//        }
 
-            binding.btnOrderPay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent browserIntent = new Intent(UPIGatewayActivity.this, WebActivity.class);
-                    startActivityForResult(browserIntent,WEB_ACTIVITY_RESULT);
+        binding.btnOrderPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(UPIGatewayActivity.this, WebActivity.class);
+                startActivityForResult(browserIntent,WEB_ACTIVITY_RESULT);
 
 
-                }
-            });
-            checkOrder();
-        }
+            }
+        });
 
 
 //        long tsLong = System.currentTimeMillis() / 1000;
@@ -298,8 +308,8 @@ public class UPIGatewayActivity extends AppCompatActivity {
                         prefManager.setPaymentEmail(binding.etxtEmail.getText().toString());
                         prefManager.setIsPaymentPreviousOrder(true);
 
-                        binding.llDetails.setVisibility(View.GONE);
-                        binding.crdOrder.setVisibility(View.VISIBLE);
+//                        binding.llDetails.setVisibility(View.GONE);
+//                        binding.crdOrder.setVisibility(View.VISIBLE);
 
                         binding.txtName.setText(prefManager.getName());
                         binding.txtEmail.setText(prefManager.getPaymentEmail());
@@ -307,15 +317,18 @@ public class UPIGatewayActivity extends AppCompatActivity {
                         binding.txtAmount.setText("\u20B9 " + prefManager.getPaymentAmount());
                         binding.txtTXNId.setText(prefManager.getPaymentClientTXNId());
 
-                        binding.btnOrderPay.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Intent browserIntent = new Intent(UPIGatewayActivity.this, WebActivity.class);
-                                startActivityForResult(browserIntent,WEB_ACTIVITY_RESULT);
-                            }
-                        });
+//                        binding.btnOrderPay.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                Intent browserIntent = new Intent(UPIGatewayActivity.this, WebActivity.class);
+//                                startActivityForResult(browserIntent,WEB_ACTIVITY_RESULT);
+//                            }
+//                        });
 
-                        logUPIPayments();
+                        Intent browserIntent = new Intent(UPIGatewayActivity.this, WebActivity.class);
+                        startActivityForResult(browserIntent,WEB_ACTIVITY_RESULT);
+
+//                        logUPIPayments();
                     } else {
                         Toast.makeText(UPIGatewayActivity.this, response.getString("msg"), Toast.LENGTH_SHORT).show();
                     }
@@ -357,7 +370,6 @@ public class UPIGatewayActivity extends AppCompatActivity {
             object.put("key", key);
             object.put("client_txn_id", prefManager.getPaymentClientTXNId());
             object.put("txn_date", prefManager.getPaymentOrderDate());
-
 //            Log.d("parshu",object.toString()+" "+prefManager.getPaymentUrl());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -376,15 +388,15 @@ public class UPIGatewayActivity extends AppCompatActivity {
                             fundTransferUPIPayments();
                             //show default details
                             prefManager.setIsPaymentPreviousOrder(false);
-                            binding.llDetails.setVisibility(View.VISIBLE);
-                            binding.crdOrder.setVisibility(View.GONE);
+//                            binding.llDetails.setVisibility(View.VISIBLE);
+//                            binding.crdOrder.setVisibility(View.GONE);
                             setDialog(true,jsonObject.getString("remark"));
                         } else if (jsonObject.getString("status").equalsIgnoreCase("failure")) {
-
+                            updateLogUPIPayments(3);
                             Toast.makeText(UPIGatewayActivity.this, jsonObject.getString("remark"), Toast.LENGTH_SHORT).show();
                             prefManager.setIsPaymentPreviousOrder(false);
-                            binding.llDetails.setVisibility(View.VISIBLE);
-                            binding.crdOrder.setVisibility(View.GONE);
+//                            binding.llDetails.setVisibility(View.VISIBLE);
+//                            binding.crdOrder.setVisibility(View.GONE);
                             setDialog(false,jsonObject.getString("remark"));
 //                            binding.etxtMobile.setText("");
 //                            binding.etxtEmail.setText("");
@@ -393,8 +405,9 @@ public class UPIGatewayActivity extends AppCompatActivity {
                             if (!jsonObject.getString("remark").isEmpty())
                                 Toast.makeText(UPIGatewayActivity.this, jsonObject.getString("remark"), Toast.LENGTH_SHORT).show();
                             //show order details
-                            binding.llDetails.setVisibility(View.GONE);
-                            binding.crdOrder.setVisibility(View.VISIBLE);
+//                            binding.llDetails.setVisibility(View.GONE);
+//                            binding.crdOrder.setVisibility(View.VISIBLE);
+//                            updateLogUPIPayments(1);
                         }
 
                     } else {
@@ -503,10 +516,10 @@ public class UPIGatewayActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "logUPIPaymentRequest");
                 params.put("userType", prefManager.getUserType());
-                params.put("token", prefManager.getToken());
-                params.put("fromAccount", prefManager.getUserId());
-                params.put("imei", prefManager.getImei());
-                params.put("amount", prefManager.getPaymentAmount());
+                params.put("token", prefManager.getToken().toString());
+                params.put("fromAccount", prefManager.getUserId().toString());
+                params.put("imei", prefManager.getImei().toString());
+                params.put("amount", prefManager.getPaymentAmount().toString());
 //                params.put("transactionId", prefManager.getPaymentClientTXNId());
 //                params.put("status", status);
                 return params;
@@ -527,8 +540,8 @@ public class UPIGatewayActivity extends AppCompatActivity {
         });
     }
 
-
-    public void updateLogUPIPayments() {
+    //1:Pending, 2:Success, 3:Fail, 4:In Progress
+    public void updateLogUPIPayments(int status) {
 //        final ProgressDialog progressDialog = ProgressDialog.show(UPIGatewayActivity.this, "Loading", "Please Wait..", true);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.JSON_URL + "transactions.php", new Response.Listener<String>() {
             @Override
@@ -564,7 +577,11 @@ public class UPIGatewayActivity extends AppCompatActivity {
                 params.put("imei", prefManager.getImei());
                 params.put("amount", prefManager.getPaymentAmount());
                 params.put("transactionId", prefManager.getPaymentClientTXNId());
+//                params.put("upiLogId", prefManager.getPaymentClientTXNId());
                 params.put("id", prefManager.getPaymentLogId());
+                params.put("status", String.valueOf(status));
+
+                Log.d("veer",params.toString());
                 return params;
             }
         };
@@ -583,9 +600,8 @@ public class UPIGatewayActivity extends AppCompatActivity {
         });
     }
 
-
-
     public void fundTransferUPIPayments() {
+
 //        final ProgressDialog progressDialog = ProgressDialog.show(UPIGatewayActivity.this, "Loading", "Please Wait..", true);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.JSON_URL + "transactions.php", new Response.Listener<String>() {
             @Override
@@ -594,11 +610,12 @@ public class UPIGatewayActivity extends AppCompatActivity {
                 try {
 //                    progressDialog.dismiss();
                     JSONObject jsonObject1 = new JSONObject(response);
+                    prefManager.setPaymentLogId(jsonObject1.getString("upiLogId"));
                     if(jsonObject1.getBoolean("ack")) {
-                        updateLogUPIPayments();
+                        updateLogUPIPayments(2);
                     } else {
-
                         Toast.makeText(UPIGatewayActivity.this, jsonObject1.getString("message"), Toast.LENGTH_LONG).show();
+                        updateLogUPIPayments(3);
                     }
                 } catch (JSONException e) {
 //                    progressDialog.dismiss();
@@ -622,7 +639,8 @@ public class UPIGatewayActivity extends AppCompatActivity {
                 params.put("imei", prefManager.getImei());
                 params.put("amount", prefManager.getPaymentAmount());
                 params.put("transactionId", prefManager.getPaymentClientTXNId());
-
+//                params.put("id",prefManager.getPaymentLogId());
+                Log.d("veer",params.toString());
                 return params;
             }
         };

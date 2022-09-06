@@ -166,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
             etToken.setError("Invalid value");
         }
         if(flag) {
+            prefManager.setPhone(etUnm.getText().toString());
             authenticate();
         } else {
             Toast.makeText(getApplicationContext(), "Invalid details.", Toast.LENGTH_LONG).show();
@@ -197,6 +198,7 @@ public class LoginActivity extends AppCompatActivity {
                         //validateOtp(jsonObject.getString("otp"));
                         Intent intent = new Intent(getApplicationContext(), ValidateOTPActivity.class);
                         intent.putExtra("otp", jsonObject.getString("otp"));
+                        intent.putExtra("password", etPwd.getText().toString().trim());
                         startActivity(intent);
                         finish();
                     } else {

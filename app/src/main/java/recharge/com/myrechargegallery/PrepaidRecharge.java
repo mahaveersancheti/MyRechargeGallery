@@ -139,7 +139,7 @@ public class PrepaidRecharge extends Fragment {
         alCircles.add("UP West");alCircles.add("West Bengal");
 //        alCircles.add(0,"Select Circle");
         spCircle.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.tv, alCircles));
-
+        spCircle.setVisibility(View.GONE);
         etAmount.setText(amt + "");
         etPhone.setText(number);
 

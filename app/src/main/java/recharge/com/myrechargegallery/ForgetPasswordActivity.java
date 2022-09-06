@@ -1,16 +1,20 @@
 package recharge.com.myrechargegallery;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 //import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +40,8 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     EditText etNumber, etOtp;
     PrefManager prefManager;
     String number = "", otp = "", password = "";
+    TextView tvTime;
+    Button btnResend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +53,28 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         llOtp = (LinearLayout) findViewById(R.id.llOtp);
         etNumber = (EditText) findViewById(R.id.etNumber);
         etOtp = (EditText) findViewById(R.id.etOtp);
-
+        tvTime = (TextView) findViewById(R.id.tvTime);
+        btnResend = (Button) findViewById(R.id.resend);
+        btnResend.setVisibility(View.GONE);
         llOtp.setVisibility(View.GONE);
+    }
+
+    private void  setTimer(){
+        btnResend.setVisibility(View.GONE);
+        new CountDownTimer(60 * 1000, 1000) {
+            @SuppressLint("SetTextI18n")
+            public void onTick(long millisUntilFinished) {
+                tvTime.setVisibility(View.VISIBLE);
+                tvTime.setText("Resend OTP: " + millisUntilFinished / 1000);
+                // logic to set the EditText could go here
+            }
+
+            public void onFinish() {
+                tvTime.setVisibility(View.GONE);
+                btnResend.setVisibility(View.VISIBLE);
+            }
+
+        }.start();
     }
 
     public void submit(View v) {
@@ -65,7 +91,8 @@ public class ForgetPasswordActivity extends AppCompatActivity {
             etNumber.setError("Invalid value");
         }
         if(flag) {
-            sendOtp();
+//            sendOtp();
+            sendNewOTP();
         } else {
             Toast.makeText(getApplicationContext(), "Invalid details.", Toast.LENGTH_LONG).show();
         }
@@ -74,7 +101,6 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     public void verify(View v) {
         String otpText = etOtp.getText().toString().trim();
         String contactPattern = "[0-9]{5}";
-
         boolean flag = true;
         if(otpText.length()==0) {
             flag = false;
@@ -82,7 +108,8 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         }
         if(flag) {
 
-            verifyOTP();
+//            verifyOTP();
+            verifyNewOTP();
 
 //            if(otp.equals(otpText)) {
 //                resetPassword(number);
@@ -109,6 +136,112 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         }
     }
 
+    public void verifyNewOTP(){
+        final ProgressDialog progressDialog = ProgressDialog.show(ForgetPasswordActivity.this, "Loading", "Please Wait..", true);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.JSON_URL + "users.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("veer", "response" + response);
+                try {
+                    progressDialog.dismiss();
+                    JSONObject jsonObject = new JSONObject(response);
+                    if(jsonObject.getJSONObject("result").getBoolean("ack")) {
+                        sendOtp();
+                    }
+                    Toast.makeText(getApplicationContext(), jsonObject.getJSONObject("result").getString("message"), Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    Log.d("veer", "" + e.getMessage());
+                    progressDialog.dismiss();
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("veer", "" + error.getMessage());
+                progressDialog.dismiss();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("method", "verifyNewOtp");
+                params.put("otp",  etOtp.getText().toString().trim());
+                params.put("contact", etNumber.getText().toString().trim());
+                return params;
+            }
+        };
+        int socketTimeout = 30000; // 30 seconds. You can change it
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
+    }
+
+
+    public void sendNewOTP(){
+        final ProgressDialog progressDialog = ProgressDialog.show(ForgetPasswordActivity.this, "Loading", "Please Wait..", true);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.JSON_URL + "users.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("veer", "response" + response);
+                try {
+                    progressDialog.dismiss();
+                    JSONObject jsonObject = new JSONObject(response);
+                    if(jsonObject.getBoolean("ack")) {
+                        llOtp.setVisibility(View.VISIBLE);
+                        etOtp.setFocusable(true);
+                        number = jsonObject.getString("contact");
+//                        password = jsonObject.getString("password");
+                        otp = jsonObject.getString("otp");
+                        setTimer();
+                    }
+                    Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    Log.d("veer", "" + e.getMessage());
+                    progressDialog.dismiss();
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("veer", "" + error.getMessage());
+                progressDialog.dismiss();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("method", "sendNewOTP");
+//                params.put("imei", prefManager.getImei());
+                params.put("contact", number);
+                return params;
+            }
+        };
+        int socketTimeout = 30000; // 30 seconds. You can change it
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
+    }
+
     public void sendOtp() {
         final ProgressDialog progressDialog = ProgressDialog.show(ForgetPasswordActivity.this, "Loading", "Please Wait..", true);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.JSON_URL + "users.php", new Response.Listener<String>() {
@@ -119,15 +252,17 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     JSONObject jsonObject = new JSONObject(response);
                     if(jsonObject.getBoolean("ack")) {
-                        number = jsonObject.getString("contact");
-                        otp = jsonObject.getString("otp");
-                        password = jsonObject.getString("password");
                         llOtp.setVisibility(View.VISIBLE);
                         etOtp.setFocusable(true);
-                        Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                        number = jsonObject.getString("contact");
+                        password = jsonObject.getString("password");
+//                        otp = jsonObject.getString("otp");
+                        Intent intent = new Intent(ForgetPasswordActivity.this,LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                     }
+                    Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     Log.d("veer", "" + e.getMessage());
                     progressDialog.dismiss();
