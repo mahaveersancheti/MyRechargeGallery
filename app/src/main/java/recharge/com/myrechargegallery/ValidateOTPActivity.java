@@ -52,6 +52,7 @@ public class ValidateOTPActivity extends AppCompatActivity {
         tvTime = (TextView) findViewById(R.id.tvTime);
         btnResend = (Button) findViewById(R.id.resend);
 //        692394
+//        462073
         setTimer();
     }
 

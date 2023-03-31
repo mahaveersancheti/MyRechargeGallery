@@ -47,8 +47,10 @@ public class HomeFragment extends Fragment {
     String titlesAdmin[] = {"Prepaid\nRecharge", "Postpaid Bill\nPayment", "DTH\nRecharge", "Electricity\nBill", "Money\nTransfer", "Fund Transfer\nand Revert", "Recharge Report\n and Statement", "Create\nRetailer", "Create\nDistributor", "Recharge\nComplaints", "Suspense\nRecharge"};
     ArrayList<Item> alItemsAdmin;
 
-    int imgsDistributors[] = {R.drawable.prepaid, R.drawable.postpaid, R.drawable.dth1, R.drawable.electricity, R.drawable.ewallet, R.drawable.fund, R.drawable.trade_alert, R.drawable.seller, R.drawable.commission};
-    String titlesDistributor[] = {"Prepaid\nRecharge", "Postpaid\nRecharge", "DTH\nRecharge", "Electricity\nBill", "Money\nTransfer", "Fund\nTransfer", "Recharge\nReport", "Create\nRetailer", "Information"};
+    int imgsDistributors[] = {R.drawable.prepaid, R.drawable.postpaid, R.drawable.dth1, R.drawable.electricity, R.drawable.ewallet, R.drawable.fund, //R.drawable.trade_alert,
+            R.drawable.seller, R.drawable.commission};
+    String titlesDistributor[] = {"Prepaid\nRecharge", "Postpaid\nRecharge", "DTH\nRecharge", "Electricity\nBill", "Money\nTransfer", "Fund\nTransfer", //"Recharge\nReport",
+            "Create\nRetailer", "Information"};
     ArrayList<Item> alItemsDistributor;
 
     int imgsRetailers[] = {R.drawable.prepaid, R.drawable.postpaid, R.drawable.dth1, R.drawable.electricity, R.drawable.fund,  R.drawable.commission};
@@ -145,6 +147,18 @@ public class HomeFragment extends Fragment {
             gridView.setAdapter(groupAdapter);
         } else if (userType.trim().equalsIgnoreCase("distributor")) {
             //Toast.makeText(getActivity(), "distributor", Toast.LENGTH_SHORT).show();
+            crdTopView.setVisibility(View.VISIBLE);
+            alItemsRetailers = new ArrayList<>();
+            alItemsRetailersTop = new ArrayList<>();
+            for (int i = 0; i < titlesRetailersTop.length; i++) {
+                Item obj = new Item();
+                obj.setImgId(imgsRetailersTop[i]);
+                obj.setTitle(titlesRetailersTop[i]);
+                alItemsRetailersTop.add(obj);
+            }
+            ItemAdapter groupAdapterTop = new ItemAdapter(getActivity(), alItemsRetailersTop);
+            gridTopView.setAdapter(groupAdapterTop);
+
             alItemsDistributor = new ArrayList<>();
             for (int i = 0; i < titlesDistributor.length; i++) {
                 Item obj = new Item();
@@ -210,9 +224,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String userType = prefManager.getUserType();
-              if (userType.trim().equalsIgnoreCase("retailer")) {
-                    retailerOptionsTop(i);
-                }
+//              if (userType.trim().equalsIgnoreCase("retailer")) {
+//                    retailerOptionsTop(i);
+//                }
+
+              retailerOptionsTop(i);
             }
         });
 
@@ -514,11 +530,11 @@ public class HomeFragment extends Fragment {
                 //fund transfer
                 selectedFragment = FundTransfer.newInstance();
                 break;
+//            case 6:
+//                //recharge report
+//                selectedFragment = RechargeReport.newInstance();
+//                break;
             case 6:
-                //recharge report
-                selectedFragment = RechargeReport.newInstance();
-                break;
-            case 7:
                 //create retailer
                 selectedFragment = RetailersList.newInstance();
                 break;
@@ -526,7 +542,7 @@ public class HomeFragment extends Fragment {
 //                //create distributor
 //                selectedFragment = CompaintRegister.newInstance();
 //                break;
-            case 8:
+            case 7:
                 //Toast.makeText(getActivity(), "Done", Toast.LENGTH_LONG).show();
                 selectedFragment = CommissionChart.newInstance();
                 break;
@@ -548,7 +564,7 @@ public class HomeFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), UPIGatewayActivity.class);
                 startActivity(intent);
             }else{
-                Toast.makeText(getActivity(), "You are not authorized/nPlease contact to admin", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "You are not authorized\nPlease contact to admin", Toast.LENGTH_LONG).show();
             }
                 break;
             case 1:
