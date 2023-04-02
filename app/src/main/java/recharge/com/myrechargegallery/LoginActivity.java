@@ -1,5 +1,6 @@
 package recharge.com.myrechargegallery;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -49,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     PrefManager prefManager;
     //DataBaseWrapper db;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
             etToken.setError("Invalid value");
         }
         if(flag) {
+            prefManager.setPhone(etUnm.getText().toString());
             authenticate();
         } else {
             Toast.makeText(getApplicationContext(), "Invalid details.", Toast.LENGTH_LONG).show();
@@ -195,6 +198,7 @@ public class LoginActivity extends AppCompatActivity {
                         //validateOtp(jsonObject.getString("otp"));
                         Intent intent = new Intent(getApplicationContext(), ValidateOTPActivity.class);
                         intent.putExtra("otp", jsonObject.getString("otp"));
+                        intent.putExtra("password", etPwd.getText().toString().trim());
                         startActivity(intent);
                         finish();
                     } else {

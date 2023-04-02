@@ -72,6 +72,28 @@
                 android:onClick="verify"
                 android:layout_gravity="center_horizontal" />
 
+            <TextView
+                android:gravity="center"
+                android:id="@+id/tvTime"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Resend after : "
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Resend OTP"
+                android:background="@drawable/btn_back_theme"
+                android:textColor="#FFFFFF"
+                android:id="@+id/resend"
+                android:onClick="authenticate"
+                android:layout_gravity="center_horizontal" />
+
 
         </LinearLayout>
     </RelativeLayout>

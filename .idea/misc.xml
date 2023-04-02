@@ -5,6 +5,22 @@
       <map>
         <entry key="..\:/Projects/RechargeSystem/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Projects/RechargeSystem/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/drawable/btn_back_theme.xml" value="0.2195" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/activity_drawer.xml" value="0.1598731884057971" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/activity_forget_password.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/activity_login.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/activity_pin.xml" value="0.2418478260869565" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/activity_u_p_i_gateway.xml" value="0.1598731884057971" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/activity_validate_otp.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/activity_web.xml" value="0.2667572463768116" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/app_bar_drawer.xml" value="0.1598731884057971" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/dialog_failed.xml" value="0.2667572463768116" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/dialog_success.xml" value="0.2667572463768116" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/fragment_list.xml" value="0.2418478260869565" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/grid_item.xml" value="0.2418478260869565" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/home_fragment.xml" value="0.2391304347826087" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/list_item_recharge_report.xml" value="0.2418478260869565" />
+        <entry key="..\:/Users/yontech/Documents/Android Studio/MyRechargeGallery/app/src/main/res/layout/prepaid_recharge_fragment.xml" value="0.2418478260869565" />
       </map>
     </option>
   </component>

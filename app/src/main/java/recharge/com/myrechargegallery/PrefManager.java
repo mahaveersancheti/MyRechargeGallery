@@ -2,6 +2,13 @@ package recharge.com.myrechargegallery;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.security.keystore.KeyGenParameterSpec;
+
+import androidx.security.crypto.EncryptedSharedPreferences;
+import androidx.security.crypto.MasterKeys;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 
 public class PrefManager {
@@ -21,6 +28,7 @@ public class PrefManager {
     private static final String shopName = "shopName";
     private static final String name = "name";
     private static final String balance = "balance";
+    private static final String phone = "phone";
 
     private static final String schemeUrl = "schemeUrl";
 
@@ -35,16 +43,41 @@ public class PrefManager {
     public static final String smsBackupDate = "smsBackupDate";
     public static final String smsBackupTime = "smsBackupTime";
 
+    public static final String isPaymentPreviousOrder = "isPaymentPreviousOrder";
+    public static final String paymentUrl = "paymentUrl";
+    public static final String paymentOrderId = "paymentOrderId";
+    public static final String paymentClientTXNId = "paymentClientTXNId";
+    public static final String paymentOrderDate = "paymentOrderDate";
+    public static final String paymentAmount = "paymentAmount";
+    public static final String paymentEmail = "paymentEmail";
+    public static final String paymentMobile = "paymentMobile";
+    public static final String paymentLogId = "paymentLogId";
+    public static final String isUPIAllowed = "isUPIAllowed";
+
+
     public PrefManager(Context context) {
         this._context = context;
-        pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
+
+//        pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
+        try {
+            // Although you can define your own key generation parameter specification, it's
+            // recommended that you use the value specified here.
+            KeyGenParameterSpec keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC;
+            String mainKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec);
+            pref = EncryptedSharedPreferences.create(PREF_NAME, mainKeyAlias, _context, EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            );
+        } catch (GeneralSecurityException | IOException e) {
+            e.printStackTrace();
+        }
         editor = pref.edit();
     }
 
     public void clearPreference() {
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
+
 
     public boolean checkSharedPrefs(String key) {
         if (pref.contains(key)) {
@@ -53,10 +86,113 @@ public class PrefManager {
         return false;
     }
 
+
+    public boolean isUPIAllowed() {
+        return pref.getBoolean(isUPIAllowed, false);
+    }
+
+    public void setIsUPIAllowed(boolean value) {
+        editor.putBoolean(isUPIAllowed, value);
+        editor.commit();
+    }
+
+    public void setPaymentLogId(String value) {
+        editor.putString(paymentLogId, value);
+        editor.commit();
+    }
+
+    public String getPhone() {
+        return pref.getString(phone, "");
+    }
+
+
+    public void setPhone(String value) {
+        editor.putString(phone, value);
+        editor.commit();
+    }
+
+    public String getPaymentLogId() {
+        return pref.getString(paymentLogId, "");
+    }
+
+
+    public void setPaymentUrl(String value) {
+        editor.putString(paymentUrl, value);
+        editor.commit();
+    }
+
+    public String getPaymentUrl() {
+        return pref.getString(paymentUrl, "");
+    }
+
+    public void setPaymentEmail(String value) {
+        editor.putString(paymentEmail, value);
+        editor.commit();
+    }
+
+    public String getPaymentEmail() {
+        return pref.getString(paymentEmail, "");
+    }
+
+    public void setPaymentMobile(String value) {
+        editor.putString(paymentMobile, value);
+        editor.commit();
+    }
+
+    public String getPaymentMobile() {
+        return pref.getString(paymentMobile, "");
+    }
+
+    public void setPaymentAmount(String value) {
+        editor.putString(paymentAmount, value);
+        editor.commit();
+    }
+
+    public String getPaymentAmount() {
+        return pref.getString(paymentAmount, "");
+    }
+
+    public void setPaymentOrderId(String value) {
+        editor.putString(paymentOrderId, value);
+        editor.commit();
+    }
+
+    public String getPaymentOrderId() {
+        return pref.getString(paymentOrderId, "");
+    }
+
+    public void setPaymentClientTXNId(String value) {
+        editor.putString(paymentClientTXNId, value);
+        editor.commit();
+    }
+
+    public String getPaymentClientTXNId() {
+        return pref.getString(paymentClientTXNId, "");
+    }
+
+    public void setPaymentOrderDate(String value) {
+        editor.putString(paymentOrderDate, value);
+        editor.commit();
+    }
+
+    public String getPaymentOrderDate() {
+        return pref.getString(paymentOrderDate, "");
+    }
+
+    public void setIsPaymentPreviousOrder(boolean value) {
+        editor.putBoolean(isPaymentPreviousOrder, value);
+        editor.commit();
+    }
+
+    public boolean getIsPaymentPreviousOrder() {
+        return pref.getBoolean(isPaymentPreviousOrder, false);
+    }
+
     public void setUserPin(String value) {
         editor.putString(userPin, value);
         editor.commit();
     }
+
     public String getUserPin() {
         return pref.getString(userPin, "");
     }
@@ -65,6 +201,7 @@ public class PrefManager {
         editor.putString(schemeUrl, value);
         editor.commit();
     }
+
     public String getSchemeUrl() {
         return pref.getString(schemeUrl, "");
     }
@@ -73,6 +210,7 @@ public class PrefManager {
         editor.putString(userId, value);
         editor.commit();
     }
+
     public String getUserId() {
         return pref.getString(userId, "");
     }
@@ -89,6 +227,7 @@ public class PrefManager {
     public String getImei() {
         return pref.getString(imei, "");
     }
+
     public void setImei(String value) {
         editor.putString(imei, value);
         editor.commit();
@@ -97,6 +236,7 @@ public class PrefManager {
     public String getShopName() {
         return pref.getString(shopName, "");
     }
+
     public void setShopName(String value) {
         editor.putString(shopName, value);
         editor.commit();
@@ -105,6 +245,7 @@ public class PrefManager {
     public String getName() {
         return pref.getString(name, "");
     }
+
     public void setName(String value) {
         editor.putString(name, value);
         editor.commit();
@@ -113,6 +254,7 @@ public class PrefManager {
     public float getBalance() {
         return pref.getFloat(balance, 0);
     }
+
     public void setBalance(float value) {
         editor.putFloat(balance, value);
         editor.commit();
@@ -121,6 +263,7 @@ public class PrefManager {
     public boolean getPrepaid() {
         return pref.getBoolean(prepaid, false);
     }
+
     public void setPrepaid(boolean value) {
         editor.putBoolean(prepaid, value);
         editor.commit();
@@ -129,6 +272,7 @@ public class PrefManager {
     public boolean getPostpaid() {
         return pref.getBoolean(postpaid, false);
     }
+
     public void setPostpaid(boolean value) {
         editor.putBoolean(postpaid, value);
         editor.commit();
@@ -137,6 +281,7 @@ public class PrefManager {
     public boolean getDth() {
         return pref.getBoolean(dth, false);
     }
+
     public void setDth(boolean value) {
         editor.putBoolean(dth, value);
         editor.commit();
@@ -145,6 +290,7 @@ public class PrefManager {
     public boolean getElectricity() {
         return pref.getBoolean(electricity, false);
     }
+
     public void setElectricity(boolean value) {
         editor.putBoolean(electricity, value);
         editor.commit();
@@ -153,6 +299,7 @@ public class PrefManager {
     public boolean getGas() {
         return pref.getBoolean(gas, false);
     }
+
     public void setGas(boolean value) {
         editor.putBoolean(gas, value);
         editor.commit();
@@ -161,6 +308,7 @@ public class PrefManager {
     public boolean getMoneyTransfer() {
         return pref.getBoolean(money_transfer, false);
     }
+
     public void setMoneyTransfer(boolean value) {
         editor.putBoolean(money_transfer, value);
         editor.commit();
@@ -170,6 +318,7 @@ public class PrefManager {
         editor.putBoolean(isLogin, value);
         editor.commit();
     }
+
     public boolean getIsLogin() {
         return pref.getBoolean(isLogin, false);
     }
@@ -178,6 +327,7 @@ public class PrefManager {
         editor.putString(token, value);
         editor.commit();
     }
+
     public String getToken() {
         return pref.getString(token, "");
     }
@@ -186,6 +336,7 @@ public class PrefManager {
         editor.putString(smsBackupDate, value);
         editor.commit();
     }
+
     public String getSmsBackupDate() {
         return pref.getString(smsBackupDate, "");
     }
@@ -194,6 +345,7 @@ public class PrefManager {
         editor.putString(smsBackupTime, value);
         editor.commit();
     }
+
     public String getSmsBackupTime() {
         return pref.getString(smsBackupTime, "01:01:01");
     }

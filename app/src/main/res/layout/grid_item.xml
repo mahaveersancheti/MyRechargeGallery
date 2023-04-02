@@ -13,8 +13,8 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:id="@+id/ivGridItem"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         app:srcCompat="@drawable/logo" />
 
     <TextView

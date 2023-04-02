@@ -609,10 +609,12 @@ public class DTHRecharge extends Fragment {
                 return params;
             }
         };
-//        int socketTimeout = 30000; // 30 seconds. You can change it
-//        //RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-//        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,-1,1);
-//        stringRequest.setRetryPolicy(policy);
+
+        int socketTimeout = 30000; // 30 seconds. You can change it
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
         final RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
         requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {

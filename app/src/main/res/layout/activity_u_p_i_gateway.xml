@@ -8,33 +8,208 @@
     android:padding="10dp"
     tools:context=".UPIGatewayActivity">
 
-    <EditText
-        android:inputType="numberDecimal"
-        android:layout_marginTop="20dp"
-        android:padding="10dp"
-        android:background="@drawable/btn_back"
-        android:hint="Amount"
-        android:id="@+id/etxt_amount"
+    <LinearLayout
+        android:id="@+id/llDetails"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <EditText
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:background="@drawable/btn_back"
-        android:hint="UPI ID"
-        android:id="@+id/etxt_upi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Pay"
-        android:background="@drawable/btn_back_theme"
-        android:textColor="#FFFFFF"
-        android:id="@+id/btn_pay"
-        android:layout_gravity="center_horizontal" />
+        android:orientation="vertical">
+
+        <EditText
+
+            android:id="@+id/etxt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_back"
+            android:hint="Name"
+            android:inputType="text"
+            android:padding="10dp" />
+
+        <EditText
+            android:visibility="gone"
+            android:id="@+id/etxt_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_back"
+            android:hint="Email"
+            android:text="jondoe@gmail.com"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" />
+
+        <EditText
+            android:visibility="gone"
+            android:text="9876543210"
+            android:id="@+id/etxt_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_back"
+            android:hint="Mobile"
+            android:inputType="number"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/etxt_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_back"
+            android:hint="Amount"
+            android:inputType="numberDecimal"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/etxt_upi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_back"
+            android:hint="UPI ID"
+            android:padding="10dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_pay"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_back_theme"
+            android:text="Pay"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/crdOrder"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+        <TextView
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="Order Details"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textColor="#000"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Name" />
+
+
+                <TextView
+                    android:id="@+id/txtName"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XYZ" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textColor="#000"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Email" />
+
+
+                <TextView
+                    android:id="@+id/txtEmail"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XYZ" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textColor="#000"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile" />
+
+
+                <TextView
+                    android:id="@+id/txtMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XYZ" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textColor="#000"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Amount" />
+
+
+                <TextView
+                    android:id="@+id/txtAmount"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XYZ" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textColor="#000"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Transaction Id" />
+
+
+                <TextView
+                    android:id="@+id/txtTXN_Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XYZ" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_OrderPay"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_back_theme"
+                android:text="Pay"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
