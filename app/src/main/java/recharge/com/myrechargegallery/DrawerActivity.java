@@ -99,16 +99,13 @@ public class DrawerActivity extends AppCompatActivity
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 Fragment selectedFragment = null;
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        selectedFragment = HomeFragment.newInstance();
-                        break;
-                    case R.id.navigation_recharge:
-                        selectedFragment = PrepaidRecharge.newInstance();
-                        break;
-                    case R.id.navigation_dth:
-                        selectedFragment = DTHRecharge.newInstance();
-                        break;
+                int itemId = item.getItemId();
+                if (itemId == R.id.navigation_home) {
+                    selectedFragment = HomeFragment.newInstance();
+                } else if (itemId == R.id.navigation_recharge) {
+                    selectedFragment = PrepaidRecharge.newInstance();
+                } else if (itemId == R.id.navigation_dth) {
+                    selectedFragment = DTHRecharge.newInstance();
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.container, selectedFragment);
