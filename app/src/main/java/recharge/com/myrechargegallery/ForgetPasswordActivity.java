@@ -48,6 +48,12 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
 
+        // Enable back button in ActionBar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Forget Password");
+        }
+
         prefManager = new PrefManager(this);
 
         llOtp = (LinearLayout) findViewById(R.id.llOtp);
@@ -404,5 +410,11 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                 requestQueue.getCache().clear();
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

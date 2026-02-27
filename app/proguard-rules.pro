@@ -29,3 +29,23 @@
     public static *** d(...);
     public static *** v(...);
 }
+
+# Volley - Critical for network operations on Jio 5G
+-keep class com.android.volley.** { *; }
+-keep class org.apache.commons.logging.**
+-keepattributes *Annotation*
+
+# OkHttp and networking classes - Important for modern networks
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+
+# SSL/TLS - Critical for HTTPS on Jio 5G
+-keep class javax.net.ssl.** { *; }
+-keep class org.apache.http.** { *; }
+-dontwarn org.apache.http.**
+-dontwarn android.net.http.**
+
+# Network Security Config
+-keep class android.security.net.config.** { *; }

@@ -29,6 +29,11 @@ public class ReEnterPinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_re_enter_pin);
 
+        // Match status bar color to activity background
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(androidx.core.content.ContextCompat.getColor(this, R.color.colorPrimary));
+        }
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#333333")));
 
         sharedPref = new PrefManager(this);

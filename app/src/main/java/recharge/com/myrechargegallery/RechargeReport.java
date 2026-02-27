@@ -212,10 +212,14 @@ public class RechargeReport extends Fragment {
                         ResourceElements.showDialogOk(getActivity(), "Result", jsonObject.getString("message"));
                         Fragment selectedFragment = null;
                         selectedFragment = HomeFragment.newInstance();
-                        if(selectedFragment!=null) {
-                            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                            transaction.replace(R.id.container, selectedFragment);
-                            transaction.commit();
+                        if(selectedFragment!=null && getActivity()!=null) {
+                            try {
+                                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                                transaction.replace(R.id.container, selectedFragment);
+                                transaction.commit();
+                            } catch (Exception e) {
+                                Log.d("RechargeReport", "Fragment transaction failed: " + e.getMessage());
+                            }
                         }
                     } else {
                         Toast.makeText(getActivity(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
@@ -682,11 +686,15 @@ public class RechargeReport extends Fragment {
 
                             Fragment selectedFragment = null;
                             selectedFragment = PrepaidRecharge.newInstance();
-                            if(selectedFragment!=null) {
-                                selectedFragment.setArguments(bundle);
-                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.container, selectedFragment);
-                                transaction.commit();
+                            if(selectedFragment!=null && getActivity()!=null) {
+                                try {
+                                    selectedFragment.setArguments(bundle);
+                                    FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.container, selectedFragment);
+                                    transaction.commit();
+                                } catch (Exception e) {
+                                    Log.d("RechargeReport", "Fragment transaction failed: " + e.getMessage());
+                                }
                             }
                         } else if(tType.equals("dth")) {
                             Bundle bundle = new Bundle();
@@ -696,11 +704,15 @@ public class RechargeReport extends Fragment {
 
                             Fragment selectedFragment = null;
                             selectedFragment = DTHRecharge.newInstance();
-                            if(selectedFragment!=null) {
-                                selectedFragment.setArguments(bundle);
-                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.container, selectedFragment);
-                                transaction.commit();
+                            if(selectedFragment!=null && getActivity()!=null) {
+                                try {
+                                    selectedFragment.setArguments(bundle);
+                                    FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.container, selectedFragment);
+                                    transaction.commit();
+                                } catch (Exception e) {
+                                    Log.d("RechargeReport", "Fragment transaction failed: " + e.getMessage());
+                                }
                             }
                         } else if(tType.equals("postpaid")) {
                             Bundle bundle = new Bundle();
@@ -710,11 +722,15 @@ public class RechargeReport extends Fragment {
 
                             Fragment selectedFragment = null;
                             selectedFragment = PostpaidRecharge.newInstance();
-                            if(selectedFragment!=null) {
-                                selectedFragment.setArguments(bundle);
-                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.container, selectedFragment);
-                                transaction.commit();
+                            if(selectedFragment!=null && getActivity()!=null) {
+                                try {
+                                    selectedFragment.setArguments(bundle);
+                                    FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.container, selectedFragment);
+                                    transaction.commit();
+                                } catch (Exception e) {
+                                    Log.d("RechargeReport", "Fragment transaction failed: " + e.getMessage());
+                                }
                             }
                         }
                     } else if(transactionType.trim().equals("money_transfer")) {

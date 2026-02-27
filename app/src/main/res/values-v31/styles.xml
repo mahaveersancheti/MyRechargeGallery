@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- API 31+ (Android 12 and above) - Fix for edge-to-edge and SDK 36 -->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    </style>
+</resources>

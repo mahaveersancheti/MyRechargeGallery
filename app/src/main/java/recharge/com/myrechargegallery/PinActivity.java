@@ -75,7 +75,10 @@ public class PinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pin);
 
-//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#333333")));
+        // Match status bar color to activity background
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#7d3c98"));
+        }
 
 //        fcmToken = FirebaseInstanceId.getInstance().getToken();
 

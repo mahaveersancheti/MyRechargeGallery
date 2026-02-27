@@ -481,6 +481,7 @@ public class DTHRecharge extends Fragment {
                 Log.d("veer", "response" + response);
                 try {
                     progressDialog.dismiss();
+                    if(getActivity() == null) return;
 
                     JSONObject jsonObject1 = new JSONObject(response);
                     if(jsonObject1.getBoolean("ack")) {
@@ -500,8 +501,11 @@ public class DTHRecharge extends Fragment {
                         Collections.sort(alOperators);
                         alOperators.add(0,"Select Operator");
                         spOperator.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.tv, alOperators));
-                        if(op.length()>0)
-                            spOperator.setSelection(alOperators.indexOf(op));
+                        if(op.length()>0) {
+                            int idx = alOperators.indexOf(op);
+                            if(idx >= 0)
+                                spOperator.setSelection(idx);
+                        }
                     } else {
                         Toast.makeText(getActivity(), jsonObject1.getString("message"), Toast.LENGTH_LONG).show();
                     }
@@ -552,6 +556,7 @@ public class DTHRecharge extends Fragment {
                 Log.d("veer", "response" + response);
                 try {
                     progressDialog.dismiss();
+                    if(getActivity() == null) return;
                     JSONObject jsonObject = new JSONObject(response);
                     if(jsonObject.getBoolean("ack")) {
                         etAmount.setText("");
@@ -562,9 +567,13 @@ public class DTHRecharge extends Fragment {
                         Fragment selectedFragment = null;
                         selectedFragment = HomeFragment.newInstance();
                         if(selectedFragment!=null) {
-                            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                            transaction.replace(R.id.container, selectedFragment);
-                            transaction.commit();
+                            try {
+                                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                                transaction.replace(R.id.container, selectedFragment);
+                                transaction.commit();
+                            } catch (Exception e) {
+                                Log.d("DTHRecharge", "Fragment transaction failed: " + e.getMessage());
+                            }
                         }
                         //Toast.makeText(getActivity(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                     } else {
@@ -577,9 +586,13 @@ public class DTHRecharge extends Fragment {
                         Fragment selectedFragment = null;
                         selectedFragment = HomeFragment.newInstance();
                         if(selectedFragment!=null) {
-                            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                            transaction.replace(R.id.container, selectedFragment);
-                            transaction.commit();
+                            try {
+                                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                                transaction.replace(R.id.container, selectedFragment);
+                                transaction.commit();
+                            } catch (Exception e) {
+                                Log.d("DTHRecharge", "Fragment transaction failed: " + e.getMessage());
+                            }
                         }
                     }
                 } catch (JSONException e) {
