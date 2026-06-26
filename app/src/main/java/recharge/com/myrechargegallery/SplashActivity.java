@@ -26,6 +26,13 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         prefManager = new PrefManager(this);
+        
+        // Test DNS resolution for debugging emulator network issues
+        // This helps diagnose ConnectException errors
+        if (BuildConfig.DEBUG) {
+            VolleySingleton.testDNSResolution("myrechargegallery.net");
+            Log.d("SplashActivity", "Network test initiated - check logs for DNS resolution");
+        }
 
         if (getIntent().getExtras() != null) {
             for (String key : getIntent().getExtras().keySet()) {

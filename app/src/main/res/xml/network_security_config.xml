@@ -3,9 +3,23 @@
     <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
             <certificates src="system" />
+            <!-- Allow user-installed certificates for debugging on emulators -->
+            <certificates src="user" />
         </trust-anchors>
     </base-config>
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">myrechargegallery.net</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <!-- Allow user-installed certificates for this domain -->
+            <certificates src="user" />
+        </trust-anchors>
     </domain-config>
+    <!-- Debug configuration for emulators and testing -->
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
 </network-security-config>

@@ -234,7 +234,9 @@ public class RechargeReport extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(getActivity(), "" + error.getMessage(), Toast.LENGTH_LONG).show();
+                String errorMessage = Config.getVolleyErrorMessage(error);
+                Log.e("RechargeReport", "API Error: " + errorMessage);
+                Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
             }
         }){
             @Override
@@ -249,19 +251,13 @@ public class RechargeReport extends Fragment {
                 return params;
             }
         };
-        int socketTimeout = 30000; // 30 seconds. You can change it
+        int socketTimeout = 30000; // 30 seconds timeout
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
-                0,
+                2,  // Retry 2 times (total 3 attempts) - important for emulators
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(policy);
-        final RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(stringRequest);
-        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
-            @Override
-            public void onRequestFinished(Request<Object> request) {
-                requestQueue.getCache().clear();
-            }
-        });
+        // Use singleton for better network handling
+        VolleySingleton.getInstance(getActivity()).addToRequestQueue(stringRequest);
     }
 
     public void loadData() {
@@ -342,19 +338,13 @@ public class RechargeReport extends Fragment {
                 return params;
             }
         };
-        int socketTimeout = 30000; // 30 seconds. You can change it
+        int socketTimeout = 30000; // 30 seconds timeout
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
-                0,
+                2,  // Retry 2 times (total 3 attempts) - important for emulators
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(policy);
-        final RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(stringRequest);
-        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
-            @Override
-            public void onRequestFinished(Request<Object> request) {
-                requestQueue.getCache().clear();
-            }
-        });
+        // Use singleton for better network handling
+        VolleySingleton.getInstance(getActivity()).addToRequestQueue(stringRequest);
     }
 
     class Item {
